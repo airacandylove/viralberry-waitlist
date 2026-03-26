@@ -1,113 +1,740 @@
-ViralBerry 🍓
-Problem
-Solution
-Pricing
-Join Waitlist
-Coming Soon
-Know what to create.
-Create it fast.
-Make it yours.
-Stop staring at blank screens. Stop copying and getting called out. Know exactly what to post, add your take, and film in 5 minutes — not 2 hours.
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ViralBerry 🍓 — Know what to create. Create it fast. Make it yours.</title>
+  <meta name="description" content="Stop staring at blank screens. Know exactly what to post, add your take, and film in 5 minutes — not 2 hours." />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --berry: #E23D69;
+      --berry-dark: #C42D55;
+      --berry-glow: rgba(226, 61, 105, 0.25);
+      --bg: #0A0A0B;
+      --surface: #141416;
+      --surface-2: #1C1C1F;
+      --border: #2A2A2E;
+      --text: #F5F5F7;
+      --text-secondary: #8E8E93;
+    }
 
-you@example.com
-Join Waitlist →
-● Join 500+ creators who never run out of ideas
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
-The Problem
-Sound familiar?
-😶
-Blank Screen Paralysis
-You sit down to create. 2 hours later... nothing. You have no idea what to make.
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
 
-🪞
-Copycat Trap
-You copy a viral video. It flops. Or worse — comments roast you for ripping it off.
+    /* Animations */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
 
-💨
-Missing the Conversation
-You see something viral. You remake it. But you missed WHY people cared. Your post dies.
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
 
-The Solution
-From 2.5 hours to 5 minutes
-1
-Drop your niche
-AI watches 8 competitors across YouTube, X, and TikTok — so you don't have to.
+    @keyframes pulse-glow {
+      0%, 100% { box-shadow: 0 0 20px var(--berry-glow); }
+      50% { box-shadow: 0 0 40px var(--berry-glow), 0 0 60px rgba(226, 61, 105, 0.1); }
+    }
 
-2
-Get pinged
-"Viral content detected + full conversation analysis." You'll know what's blowing up and why.
+    @keyframes shimmer {
+      0% { background-position: -200% 0; }
+      100% { background-position: 200% 0; }
+    }
 
-3
-Pick your angle
-3 suggested takes based on the discourse — or write your own. Your voice, your perspective.
+    .animate-fade-up {
+      opacity: 0;
+      animation: fadeUp 0.7s ease-out forwards;
+    }
 
-4
-Film instantly
-Teleprompter scrolls your script. Just read and record. Done in minutes.
+    .animate-fade-in {
+      opacity: 0;
+      animation: fadeIn 0.6s ease-out forwards;
+    }
 
-Why It Works
-Other tools show you WHAT went viral.
-ViralBerry shows you WHAT PEOPLE ARE SAYING about it.
-Full comment threads
+    .delay-1 { animation-delay: 0.1s; }
+    .delay-2 { animation-delay: 0.2s; }
+    .delay-3 { animation-delay: 0.3s; }
+    .delay-4 { animation-delay: 0.4s; }
+    .delay-5 { animation-delay: 0.5s; }
+    .delay-6 { animation-delay: 0.6s; }
 
-Not just the top 5 — the entire conversation, analyzed.
+    /* Scroll-triggered animations */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
 
-Sentiment analysis
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
 
-Fear vs excitement vs debate. Know the emotional landscape.
+    /* Custom styles */
+    .berry-btn {
+      background: var(--berry);
+      color: white;
+      border: none;
+      padding: 14px 32px;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      position: relative;
+      overflow: hidden;
+    }
 
-3 angle suggestions
+    .berry-btn:hover {
+      background: var(--berry-dark);
+      transform: translateY(-1px);
+      box-shadow: 0 8px 30px var(--berry-glow);
+    }
 
-Based on discourse gaps — say what nobody else is saying.
+    .berry-btn:active {
+      transform: translateY(0);
+    }
 
-Your authentic voice
+    .berry-btn.pulse {
+      animation: pulse-glow 2.5s ease-in-out infinite;
+    }
 
-Not generic AI. You add to the conversation — not copy it.
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 32px;
+      transition: all 0.3s ease;
+    }
 
-Result: You add to the conversation. Not copy it.
+    .card:hover {
+      border-color: rgba(226, 61, 105, 0.3);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+    }
 
-Who It's For
-For creators who:
-📅 Post 3–5x/week and burn out
-🚫 Want to ride trends without looking like a copycat
-💡 Care about adding value, not just views
-Pricing — Coming Soon
-Simple plans that grow with you
-FREE
+    .step-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px;
+      position: relative;
+      transition: all 0.3s ease;
+    }
 
-$0
+    .step-card:hover {
+      border-color: rgba(226, 61, 105, 0.3);
+      background: var(--surface-2);
+    }
 
-Forever
+    .step-number {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: rgba(226, 61, 105, 0.15);
+      color: var(--berry);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 14px;
+      flex-shrink: 0;
+    }
 
-3 competitors tracked
-Manual posting
-Basic trend alerts
-PRO
+    .pricing-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 36px;
+      transition: all 0.3s ease;
+    }
 
-POPULAR
-$29/mo
+    .pricing-card.featured {
+      border-color: var(--berry);
+      background: linear-gradient(180deg, rgba(226, 61, 105, 0.08) 0%, var(--surface) 100%);
+      box-shadow: 0 0 40px var(--berry-glow);
+    }
 
-For serious creators
+    .pricing-card:hover {
+      transform: translateY(-4px);
+    }
 
-8 competitors tracked
-Real-time alerts
-Built-in teleprompter
-3 AI angle suggestions
-TEAM
+    .tag {
+      display: inline-block;
+      background: rgba(226, 61, 105, 0.12);
+      color: var(--berry);
+      padding: 6px 14px;
+      border-radius: 100px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
 
-$199/mo
+    .email-input {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px 18px;
+      color: var(--text);
+      font-size: 16px;
+      font-family: 'Inter', sans-serif;
+      width: 100%;
+      outline: none;
+      transition: border-color 0.2s ease;
+    }
 
-For agencies & teams
+    .email-input:focus {
+      border-color: var(--berry);
+      box-shadow: 0 0 0 3px rgba(226, 61, 105, 0.15);
+    }
 
-Everything in Pro
-Multi-account management
-Brand voice training
-Priority support
-Ready to stop guessing?
-Join the waitlist and be the first to know when ViralBerry launches.
+    .email-input::placeholder {
+      color: var(--text-secondary);
+    }
 
-you@example.com
-Join Waitlist →
-© 2026 ViralBerry 🍓  ·  Built with TinyFish + OpenAI
+    .gradient-text {
+      background: linear-gradient(135deg, var(--text) 0%, var(--text-secondary) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
 
-🍓 You're on the list! We'll ping you when it's time.
+    .berry-gradient-text {
+      background: linear-gradient(135deg, var(--berry) 0%, #FF6B8A 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border), transparent);
+    }
+
+    /* Toast notification */
+    .toast {
+      position: fixed;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px 24px;
+      z-index: 100;
+      opacity: 0;
+      transition: all 0.4s ease;
+      font-size: 15px;
+    }
+
+    .toast.show {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+
+    /* Subtle grid background */
+    .hero-bg {
+      position: relative;
+    }
+
+    .hero-bg::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background:
+        radial-gradient(circle at 50% 0%, rgba(226, 61, 105, 0.08) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    /* Check icon */
+    .check {
+      color: var(--berry);
+      flex-shrink: 0;
+    }
+
+    /* Persona tags */
+    .persona-tag {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px 24px;
+      font-size: 15px;
+      transition: all 0.2s ease;
+    }
+
+    .persona-tag:hover {
+      border-color: rgba(226, 61, 105, 0.3);
+      background: rgba(226, 61, 105, 0.05);
+    }
+
+    /* Smooth scroll offset for nav */
+    section[id] {
+      scroll-margin-top: 80px;
+    }
+
+    /* Mobile adjustments */
+    @media (max-width: 640px) {
+      .hero-headline {
+        font-size: 2rem !important;
+        line-height: 1.15 !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="fixed top-0 left-0 right-0 z-50 backdrop-filter" style="background: rgba(10,10,11,0.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--border);">
+    <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+      <a href="#" class="text-lg font-bold tracking-tight" style="color: var(--text);">ViralBerry <span style="font-size: 1.1em;">🍓</span></a>
+      <div class="hidden sm:flex items-center gap-8 text-sm" style="color: var(--text-secondary);">
+        <a href="#problem" class="hover:text-white transition-colors">Problem</a>
+        <a href="#solution" class="hover:text-white transition-colors">Solution</a>
+        <a href="#pricing" class="hover:text-white transition-colors">Pricing</a>
+      </div>
+      <a href="#hero" class="berry-btn" style="padding: 8px 20px; font-size: 14px; border-radius: 8px;">Join Waitlist</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero" class="hero-bg min-h-screen flex items-center justify-center pt-16">
+    <div class="max-w-3xl mx-auto px-6 py-24 text-center">
+      <div class="animate-fade-up">
+        <span class="tag">Coming Soon</span>
+      </div>
+
+      <h1 class="hero-headline animate-fade-up delay-1 mt-8 text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight tracking-tight" style="color: var(--text);">
+        Know what to create.<br />
+        Create it fast.<br />
+        <span class="berry-gradient-text">Make it yours.</span>
+      </h1>
+
+      <p class="animate-fade-up delay-2 mt-6 text-lg sm:text-xl leading-relaxed max-w-2xl mx-auto" style="color: var(--text-secondary);">
+        Stop staring at blank screens. Stop copying and getting called out. Know exactly what to post, add your take, and film in 5 minutes — not 2 hours.
+      </p>
+
+      <!-- Email Form -->
+      <form id="waitlist-form" class="animate-fade-up delay-3 mt-10 flex flex-col sm:flex-row gap-3 max-w-lg mx-auto">
+        <input
+          type="email"
+          id="email-input"
+          class="email-input flex-1"
+          placeholder="you@example.com"
+          required
+          autocomplete="email"
+        />
+        <button type="submit" class="berry-btn pulse whitespace-nowrap">
+          Join Waitlist →
+        </button>
+      </form>
+
+      <p class="animate-fade-up delay-4 mt-5 text-sm" style="color: var(--text-secondary);">
+        <span style="color: var(--berry);">●</span> Join <strong style="color: var(--text);">500+ creators</strong> who never run out of ideas
+      </p>
+    </div>
+  </section>
+
+  <!-- PROBLEM -->
+  <section id="problem" class="py-24 sm:py-32">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-16 reveal">
+        <span class="tag">The Problem</span>
+        <h2 class="mt-6 text-3xl sm:text-4xl font-bold tracking-tight">Sound familiar?</h2>
+      </div>
+
+      <div class="grid sm:grid-cols-3 gap-6">
+        <!-- Card 1 -->
+        <div class="card reveal" style="transition-delay: 0.1s;">
+          <div class="text-3xl mb-5">😶</div>
+          <h3 class="text-xl font-semibold mb-3">Blank Screen Paralysis</h3>
+          <p style="color: var(--text-secondary); line-height: 1.7;">
+            You sit down to create. 2 hours later... nothing. You have no idea what to make.
+          </p>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="card reveal" style="transition-delay: 0.2s;">
+          <div class="text-3xl mb-5">🪞</div>
+          <h3 class="text-xl font-semibold mb-3">Copycat Trap</h3>
+          <p style="color: var(--text-secondary); line-height: 1.7;">
+            You copy a viral video. It flops. Or worse — comments roast you for ripping it off.
+          </p>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="card reveal" style="transition-delay: 0.3s;">
+          <div class="text-3xl mb-5">💨</div>
+          <h3 class="text-xl font-semibold mb-3">Missing the Conversation</h3>
+          <p style="color: var(--text-secondary); line-height: 1.7;">
+            You see something viral. You remake it. But you missed WHY people cared. Your post dies.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider max-w-6xl mx-auto"></div>
+
+  <!-- SOLUTION -->
+  <section id="solution" class="py-24 sm:py-32">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="text-center mb-16 reveal">
+        <span class="tag">The Solution</span>
+        <h2 class="mt-6 text-3xl sm:text-4xl font-bold tracking-tight">
+          From <span style="text-decoration: line-through; color: var(--text-secondary);">2.5 hours</span> to <span class="berry-gradient-text">5 minutes</span>
+        </h2>
+      </div>
+
+      <div class="space-y-5">
+        <!-- Step 1 -->
+        <div class="step-card reveal flex items-start gap-5" style="transition-delay: 0.1s;">
+          <div class="step-number mt-1">1</div>
+          <div>
+            <h3 class="text-lg font-semibold mb-1">Drop your niche</h3>
+            <p style="color: var(--text-secondary); line-height: 1.7;">AI watches 8 competitors across YouTube, X, and TikTok — so you don't have to.</p>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="step-card reveal flex items-start gap-5" style="transition-delay: 0.2s;">
+          <div class="step-number mt-1">2</div>
+          <div>
+            <h3 class="text-lg font-semibold mb-1">Get pinged</h3>
+            <p style="color: var(--text-secondary); line-height: 1.7;">"Viral content detected + full conversation analysis." You'll know what's blowing up and <em>why</em>.</p>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="step-card reveal flex items-start gap-5" style="transition-delay: 0.3s;">
+          <div class="step-number mt-1">3</div>
+          <div>
+            <h3 class="text-lg font-semibold mb-1">Pick your angle</h3>
+            <p style="color: var(--text-secondary); line-height: 1.7;">3 suggested takes based on the discourse — or write your own. Your voice, your perspective.</p>
+          </div>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="step-card reveal flex items-start gap-5" style="transition-delay: 0.4s;">
+          <div class="step-number mt-1">4</div>
+          <div>
+            <h3 class="text-lg font-semibold mb-1">Film instantly</h3>
+            <p style="color: var(--text-secondary); line-height: 1.7;">Teleprompter scrolls your script. Just read and record. Done in minutes.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider max-w-6xl mx-auto"></div>
+
+  <!-- WHY IT WORKS -->
+  <section id="why" class="py-24 sm:py-32">
+    <div class="max-w-4xl mx-auto px-6">
+      <div class="text-center mb-14 reveal">
+        <span class="tag">Why It Works</span>
+        <h2 class="mt-6 text-3xl sm:text-4xl font-bold tracking-tight leading-tight">
+          Other tools show you <span style="color: var(--text-secondary);">WHAT</span> went viral.<br />
+          ViralBerry shows you <span class="berry-gradient-text">WHAT PEOPLE ARE SAYING</span> about it.
+        </h2>
+      </div>
+
+      <div class="grid sm:grid-cols-2 gap-5 reveal">
+        <div class="card" style="padding: 24px 28px;">
+          <div class="flex items-start gap-3">
+            <span class="check mt-1">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M6 10l3 3 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <div>
+              <p class="font-semibold mb-1">Full comment threads</p>
+              <p class="text-sm" style="color: var(--text-secondary);">Not just the top 5 — the entire conversation, analyzed.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" style="padding: 24px 28px;">
+          <div class="flex items-start gap-3">
+            <span class="check mt-1">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M6 10l3 3 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <div>
+              <p class="font-semibold mb-1">Sentiment analysis</p>
+              <p class="text-sm" style="color: var(--text-secondary);">Fear vs excitement vs debate. Know the emotional landscape.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" style="padding: 24px 28px;">
+          <div class="flex items-start gap-3">
+            <span class="check mt-1">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M6 10l3 3 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <div>
+              <p class="font-semibold mb-1">3 angle suggestions</p>
+              <p class="text-sm" style="color: var(--text-secondary);">Based on discourse gaps — say what nobody else is saying.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" style="padding: 24px 28px;">
+          <div class="flex items-start gap-3">
+            <span class="check mt-1">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M6 10l3 3 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <div>
+              <p class="font-semibold mb-1">Your authentic voice</p>
+              <p class="text-sm" style="color: var(--text-secondary);">Not generic AI. You add to the conversation — not copy it.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center mt-12 reveal">
+        <p class="text-lg font-semibold" style="color: var(--berry);">
+          Result: You add to the conversation. Not copy it.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider max-w-6xl mx-auto"></div>
+
+  <!-- WHO IT'S FOR -->
+  <section id="who" class="py-24 sm:py-32">
+    <div class="max-w-3xl mx-auto px-6 text-center">
+      <div class="reveal">
+        <span class="tag">Who It's For</span>
+        <h2 class="mt-6 text-3xl sm:text-4xl font-bold tracking-tight mb-10">For creators who:</h2>
+      </div>
+
+      <div class="flex flex-col sm:flex-row flex-wrap justify-center gap-4 reveal">
+        <div class="persona-tag">📅 Post 3–5x/week and burn out</div>
+        <div class="persona-tag">🚫 Want to ride trends without looking like a copycat</div>
+        <div class="persona-tag">💡 Care about adding value, not just views</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider max-w-6xl mx-auto"></div>
+
+  <!-- PRICING -->
+  <section id="pricing" class="py-24 sm:py-32">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="text-center mb-16 reveal">
+        <span class="tag">Pricing — Coming Soon</span>
+        <h2 class="mt-6 text-3xl sm:text-4xl font-bold tracking-tight">Simple plans that grow with you</h2>
+      </div>
+
+      <div class="grid sm:grid-cols-3 gap-6">
+        <!-- Free -->
+        <div class="pricing-card reveal" style="transition-delay: 0.1s;">
+          <p class="text-sm font-semibold mb-2" style="color: var(--text-secondary);">FREE</p>
+          <p class="text-3xl font-bold mb-1">$0</p>
+          <p class="text-sm mb-6" style="color: var(--text-secondary);">Forever</p>
+          <div class="divider mb-6"></div>
+          <ul class="space-y-3 text-sm" style="color: var(--text-secondary);">
+            <li class="flex items-start gap-2">
+              <span class="check mt-0.5"><svg width="16" height="16" viewBox="0 0 20 20" fill="none"><path d="M6 10l3 3 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              3 competitors tracked
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="check mt-0.5"><svg width="16" height="16" viewBox="0 0 20 20" fill="none"><path d="M6 10l3 3 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              Manual posting
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="check mt-0.5"><svg width="16" height="16" viewBox="0 0 20 20" fill="none"><path d="M6 10l3 3 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              Basic trend alerts
+            </li>
+          </ul>
+        </div>
+
+        <!-- Pro -->
+        <div class="pricing-card featured reveal" style="transition-delay: 0.2s;">
+          <div class="flex items-center gap-2 mb-2">
+            <p class="text-sm font-semibold" style="color: var(--berry);">PRO</p>
+            <span style="background: var(--berry); color: white; font-size: 11px; padding: 2px 8px; border-radius: 100px; font-weight: 600;">POPULAR</span>
+          </div>
+          <p class="text-3xl font-bold mb-1">$29<span class="text-lg font-normal" style="color: var(--text-secondary);">/mo</span></p>
+          <p class="text-sm mb-6" style="color: var(--text-secondary);">For serious creators</p>
+          <div class="divider mb-6"></div>
+          <ul class="space-y-3 text-sm" style="color: var(--text-secondary);">
+            <li class="flex items-start gap-2">
+              <span class="check mt-0.5"><svg width="16" height="16" viewBox="0 0 20 20" fill="none"><path d="M6 10l3 3 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              8 competitors tracked
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="check mt-0.5"><svg width="16" height="16" viewBox="0 0 20 20" fill="none"><path d="M6 10l3 3 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              Real-time alerts
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="check mt-0.5"><svg width="16" height="16" viewBox="0 0 20 20" fill="none"><path d="M6 10l3 3 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              Built-in teleprompter
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="check mt-0.5"><svg width="16" height="16" viewBox="0 0 20 20" fill="none"><path d="M6 10l3 3 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              3 AI angle suggestions
+            </li>
+          </ul>
+        </div>
+
+        <!-- Team -->
+        <div class="pricing-card reveal" style="transition-delay: 0.3s;">
+          <p class="text-sm font-semibold mb-2" style="color: var(--text-secondary);">TEAM</p>
+          <p class="text-3xl font-bold mb-1">$199<span class="text-lg font-normal" style="color: var(--text-secondary);">/mo</span></p>
+          <p class="text-sm mb-6" style="color: var(--text-secondary);">For agencies & teams</p>
+          <div class="divider mb-6"></div>
+          <ul class="space-y-3 text-sm" style="color: var(--text-secondary);">
+            <li class="flex items-start gap-2">
+              <span class="check mt-0.5"><svg width="16" height="16" viewBox="0 0 20 20" fill="none"><path d="M6 10l3 3 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              Everything in Pro
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="check mt-0.5"><svg width="16" height="16" viewBox="0 0 20 20" fill="none"><path d="M6 10l3 3 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              Multi-account management
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="check mt-0.5"><svg width="16" height="16" viewBox="0 0 20 20" fill="none"><path d="M6 10l3 3 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              Brand voice training
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="check mt-0.5"><svg width="16" height="16" viewBox="0 0 20 20" fill="none"><path d="M6 10l3 3 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              Priority support
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider max-w-6xl mx-auto"></div>
+
+  <!-- FINAL CTA -->
+  <section class="py-24 sm:py-32">
+    <div class="max-w-2xl mx-auto px-6 text-center reveal">
+      <h2 class="text-3xl sm:text-4xl font-bold tracking-tight mb-4">
+        Ready to stop guessing?
+      </h2>
+      <p class="text-lg mb-8" style="color: var(--text-secondary);">
+        Join the waitlist and be the first to know when ViralBerry launches.
+      </p>
+      <form id="waitlist-form-bottom" class="flex flex-col sm:flex-row gap-3 max-w-lg mx-auto">
+        <input
+          type="email"
+          class="email-input flex-1"
+          placeholder="you@example.com"
+          required
+          autocomplete="email"
+        />
+        <button type="submit" class="berry-btn pulse whitespace-nowrap">
+          Join Waitlist →
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer style="border-top: 1px solid var(--border);">
+    <div class="max-w-6xl mx-auto px-6 py-10 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <p class="text-sm" style="color: var(--text-secondary);">
+        © 2026 ViralBerry 🍓 &nbsp;·&nbsp; Built with TinyFish + OpenAI
+      </p>
+      <div class="flex items-center gap-5">
+        <a href="https://twitter.com" target="_blank" rel="noopener" class="transition-colors hover:text-white" style="color: var(--text-secondary);">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </a>
+        <a href="https://discord.com" target="_blank" rel="noopener" class="transition-colors hover:text-white" style="color: var(--text-secondary);">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189z"/></svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- TOAST -->
+  <div id="toast" class="toast">
+    <span style="color: var(--berry); margin-right: 8px;">🍓</span> You're on the list! We'll ping you when it's time.
+  </div>
+
+  <!-- JAVASCRIPT -->
+  <script>
+    // Scroll reveal
+    const revealElements = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+    revealElements.forEach(el => revealObserver.observe(el));
+
+    // Waitlist form handling
+    async function handleSubmit(e) {
+      e.preventDefault();
+      const input = e.target.querySelector('input[type="email"]');
+      const btn = e.target.querySelector('button');
+      const email = input.value.trim();
+      if (!email) return;
+
+      // Disable button while submitting
+      btn.disabled = true;
+      btn.textContent = 'Joining...';
+
+      try {
+        const res = await fetch('/api/waitlist', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email })
+        });
+
+        if (!res.ok) throw new Error('Signup failed');
+
+        // Show success toast
+        const toast = document.getElementById('toast');
+        toast.classList.add('show');
+        input.value = '';
+        setTimeout(() => toast.classList.remove('show'), 4000);
+      } catch (err) {
+        // Show error toast
+        const toast = document.getElementById('toast');
+        toast.innerHTML = '<span style="color: var(--berry); margin-right: 8px;">⚠️</span> Something went wrong. Please try again.';
+        toast.classList.add('show');
+        setTimeout(() => {
+          toast.classList.remove('show');
+          toast.innerHTML = '<span style="color: var(--berry); margin-right: 8px;">🍓</span> You\'re on the list! We\'ll ping you when it\'s time.';
+        }, 4000);
+      } finally {
+        btn.disabled = false;
+        btn.textContent = 'Join Waitlist →';
+      }
+    }
+
+    document.getElementById('waitlist-form').addEventListener('submit', handleSubmit);
+    document.getElementById('waitlist-form-bottom').addEventListener('submit', handleSubmit);
+
+    // Smooth nav background on scroll
+    const nav = document.querySelector('nav');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 20) {
+        nav.style.borderBottomColor = 'var(--border)';
+      } else {
+        nav.style.borderBottomColor = 'transparent';
+      }
+    });
+  </script>
+
+</body>
+</html>
